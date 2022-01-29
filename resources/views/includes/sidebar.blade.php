@@ -89,6 +89,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{ route('admin') }}" class="nav-link {{ ($active == 'admin') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Admin</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{ route('siswa') }}" class="nav-link {{ ($active == 'siswa') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Siswa</p>

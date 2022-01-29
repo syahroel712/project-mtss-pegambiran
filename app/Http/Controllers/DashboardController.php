@@ -58,7 +58,7 @@ class DashboardController extends Controller
                 return back()->with("message", "Silahkan pilih level");
         }
 
-        if($user->user_jabatan == 'Kepala Sekolah'){
+        if(session()->get('user_jabatan') == 'Kepala Sekolah'){
             // cari data kepsek
             $kepsek = DB::table('tb_kepsek')
                         ->where('guru_id', $user->guru_id)
@@ -67,7 +67,7 @@ class DashboardController extends Controller
         }
 
         // redirect ke halaman home
-        return redirect('dashboard')->with("pesan", "Selamat Datang " . session('user_nama'));        
+        return redirect('administrator/dashboard')->with("pesan", "Selamat Datang " . session('user_nama'));        
     }
 
     public function register()
@@ -100,9 +100,10 @@ class DashboardController extends Controller
 
     function logout(Request $request)
     {
-        $request->session()->forget('guru_nama');
-        $request->session()->forget('guru_username');
-        $request->session()->forget('guru_level');
+        $request->session()->forget('user_id');
+        $request->session()->forget('user_nama');
+        $request->session()->forget('user_username');
+        $request->session()->forget('user_level');
         $request->session()->forget('guru_id');
         $request->session()->forget('token');
         // redirect ke halaman home

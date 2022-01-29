@@ -19,7 +19,7 @@ class SudahLogin
         if (session()->has('user_id')) {
             return $next($request);
         } else {
-            return redirect("/")->with("message", "Anda Belum Login");;
+            return redirect("administrator")->with("message", "Anda Belum Login");;
         }
     }
 }

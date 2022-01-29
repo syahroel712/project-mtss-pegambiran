@@ -8,6 +8,7 @@ use App\Http\Controllers\MapelController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KepsekController;
 use App\Http\Controllers\TahunAjarController;
 use App\Http\Controllers\WalasController;
@@ -86,6 +87,14 @@ Route::prefix('administrator')->group(function () {
         Route::get('/guru/{guru}', [GuruController::class, 'edit'])->name('guru.edit');
         Route::put('/guru/{guru}', [GuruController::class, 'update'])->name('guru.update');
         Route::delete('/guru/{guru}', [GuruController::class, 'destroy'])->name('guru.delete');
+        
+        // admin
+        Route::get('admin', [AdminController::class, 'index'])->name('admin');
+        Route::get('/admin/create', [AdminController::class, 'create'])->name('admin.create');
+        Route::post('/admin', [AdminController::class, 'store'])->name('admin.store');
+        Route::get('/admin/{admin}', [AdminController::class, 'edit'])->name('admin.edit');
+        Route::put('/admin/{admin}', [AdminController::class, 'update'])->name('admin.update');
+        Route::delete('/admin/{admin}', [AdminController::class, 'destroy'])->name('admin.delete');
 
         // kepsek
         Route::get('kepsek', [KepsekController::class, 'index'])->name('kepsek');
