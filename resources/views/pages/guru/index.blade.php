@@ -9,7 +9,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">E Rapor</a></li>
+                                <li class="breadcrumb-item"><a href="#">MTSN Pengambiran</a></li>
                                 <li class="breadcrumb-item active">Guru</li>
                             </ol>
                         </div>
@@ -111,7 +111,7 @@
                             <div class="modal-body">
                                 @csrf
                                 @method('delete')
-                                Yakin Hapus Data, Ini Mungkin Akan Berpengaruh Pada Aplikasi E Rapor Anda  ?
+                                Yakin Hapus Data, Ini Mungkin Akan Berpengaruh Pada Aplikasi MTSN Pengambiran Anda  ?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
