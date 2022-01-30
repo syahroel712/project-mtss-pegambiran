@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-5">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -101,7 +101,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-7">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -113,7 +113,7 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-8">
+                                                        <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <label>Mata Pelajaran</label>
                                                                 <select class="custom-select select2bs4 @error('mapel_id') {{ 'is-invalid' }} @enderror" name="mapel_id" id="mapel_id">
@@ -132,10 +132,16 @@
                                                                 @enderror
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-4">
+                                                        <div class="col-md-3">
                                                             <div class="form-group">
-                                                                <label>Nilai</label>
-                                                                <input type="number" class="form-control number @error('nilai_detail_nilai') {{ 'is-invalid' }} @enderror" name="nilai_detail_nilai" id="nilai_detail_nilai" value="{{ old('nilai_detail_nilai') ?? $guru->nilai_detail_nilai ?? '' }}" onKeyPress="if(this.value.length==3) return false;">
+                                                                <label>Nilai Kognitif</label>
+                                                                <input type="number" class="form-control number @error('nilai_detail_kognitif') {{ 'is-invalid' }} @enderror" name="nilai_detail_kognitif" id="nilai_detail_kognitif" value="{{ old('nilai_detail_kognitif') ?? $guru->nilai_detail_kognitif ?? '' }}" onKeyPress="if(this.value.length==3) return false;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <div class="form-group">
+                                                                <label>Nilai Keterampilan</label>
+                                                                <input type="number" class="form-control number @error('nilai_detail_keterampilan') {{ 'is-invalid' }} @enderror" name="nilai_detail_keterampilan" id="nilai_detail_keterampilan" value="{{ old('nilai_detail_keterampilan') ?? $guru->nilai_detail_keterampilan ?? '' }}" onKeyPress="if(this.value.length==3) return false;">
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
@@ -161,7 +167,10 @@
                                                     <tr>
                                                         <th>No</th>
                                                         <th>Mata Pelajaran</th>
-                                                        <th>Nilai</th>
+                                                        <th>Nilai Kognitif</th>
+                                                        <th>Grade Kognitif</th>
+                                                        <th>Nilai Keterampilan</th>
+                                                        <th>Grade Keterampilan</th>
                                                         <th>Option</th>
                                                     </tr>
                                                 </thead>
@@ -214,16 +223,24 @@
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Update Nilai</h5>
+                            <h5 class="modal-title">Update Nilai <span id="nama_mapel"></span></h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <input type="hidden" id="nilai_detail_id_edit">
-                            <div class="form-group">
-                                <label id="nama_mapel"></label>
-                                <input type="number" class="form-control number @error('nilai_detail_nilai_edit') {{ 'is-invalid' }} @enderror" name="nilai_detail_nilai_edit" id="nilai_detail_nilai_edit"  onKeyPress="if(this.value.length==3) return false;">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-4 col-form-label">Nilai Kognitif</label>
+                                <div class="col-sm-8">
+                                <input type="number" class="form-control number @error('nilai_detail_kognitif_edit') {{ 'is-invalid' }} @enderror" name="nilai_detail_kognitif_edit" id="nilai_detail_kognitif_edit"  onKeyPress="if(this.value.length==3) return false;">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-4 col-form-label">Nilai Keterampilan</label>
+                                <div class="col-sm-8">
+                                <input type="number" class="form-control number @error('nilai_detail_keterampilan_edit') {{ 'is-invalid' }} @enderror" name="nilai_detail_keterampilan_edit" id="nilai_detail_keterampilan_edit"  onKeyPress="if(this.value.length==3) return false;">
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -279,7 +296,8 @@
                     var tahun_ajar_id = $('#tahun_ajar_id').val();
                     var siswa_id = $('#siswa_id').val();
                     var mapel_id = $('#mapel_id').val();
-                    var nilai_detail_nilai = $('#nilai_detail_nilai').val();
+                    var nilai_detail_kognitif = $('#nilai_detail_kognitif').val();
+                    var nilai_detail_keterampilan = $('#nilai_detail_keterampilan').val();
 
 
                     if(kelas_id != '0' && semester_id != '0' && tahun_ajar_id != '0' && siswa_id != '0' && mapel_id != '0'){
@@ -290,14 +308,16 @@
                             'tahun_ajar_id' : tahun_ajar_id, 
                             'siswa_id' : siswa_id, 
                             'mapel_id' : mapel_id, 
-                            'nilai_detail_nilai' : nilai_detail_nilai, 
+                            'nilai_detail_kognitif' : nilai_detail_kognitif, 
+                            'nilai_detail_keterampilan' : nilai_detail_keterampilan, 
                         }).then(function (res) {
                             $('#messageModal').show();
                             $('#messageModalText').text(res.data.message)
                             setInterval(function(){ $('#messageModal').hide(); }, 5000);
 
                             $('#mapel_id').val('0').change();
-                            $('#nilai_detail_nilai').val('');
+                            $('#nilai_detail_kognitif').val('');
+                            $('#nilai_detail_keterampilan').val('');
 
                             $('#data_nilai_siswa').load(`{{ url("/administrator/rapor/cari-nilai-siswa") }}/` + siswa_id + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
                             
@@ -335,21 +355,24 @@
 
                 }
 
-                function mEditSiswa(id, nama_mapel, nilai_detail_nilai) { 
+                function mEditSiswa(id, nama_mapel, nilai_detail_kognitif, nilai_detail_keterampilan) { 
                     $('#nilai_detail_id_edit').val(id)
                     $('#nama_mapel').text(nama_mapel)
-                    $('#nilai_detail_nilai_edit').val(nilai_detail_nilai)
+                    $('#nilai_detail_kognitif_edit').val(nilai_detail_kognitif)
+                    $('#nilai_detail_keterampilan_edit').val(nilai_detail_keterampilan)
                     $('#ModalEdit').modal();
                 }
 
                 function editNilai() {  
                     var nilai_detail_id = $('#nilai_detail_id_edit').val()
-                    var nilai_detail_nilai = $('#nilai_detail_nilai_edit').val()
+                    var nilai_detail_kognitif = $('#nilai_detail_kognitif_edit').val()
+                    var nilai_detail_keterampilan = $('#nilai_detail_keterampilan_edit').val()
 
                     axios.post('{{ route("rapor.update") }}', {
                         '_token': '{{ csrf_token() }}',
                         'nilai_detail_id' : nilai_detail_id, 
-                        'nilai_detail_nilai' : nilai_detail_nilai, 
+                        'nilai_detail_kognitif' : nilai_detail_kognitif, 
+                        'nilai_detail_keterampilan' : nilai_detail_keterampilan, 
                     }).then(function (res) {
                         $('#messageModal').show();
                         $('#messageModalText').text(res.data.message)

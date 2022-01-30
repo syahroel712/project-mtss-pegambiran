@@ -106,7 +106,7 @@
                             <a href="#" class="nav-link {{ ($active == 'walas' || $active == 'rapor' || $active == 'input-rapor') ? 'active' : '' }}" >
                                 <i class="nav-icon fa fa-tasks"></i>
                                 <p>
-                                    E-Rapor
+                                    Rapor Siswa
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>

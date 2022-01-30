@@ -47,19 +47,19 @@
                                                 <li>Kemudian, Admin harus mengisi semua data user</li>
                                                 <li>Terakhir, Admin harus menentukan walikelas dari masing-masing kelas dan menentukan siswa yang termasuk ke kelas tersebut</li>
                                             </ul>
-                                        <li><h5>Rule Wali Kelas</h5></li>
+                                        <li><h5>Rule Guru</h5></li>
                                             <ul>
-                                                <li>Wali Kelas bisa melihat semua data dan hanya beberapa fitur yang bisa digunakan oleh wali kelas</li>
-                                                <li>Wali kelas bisa mengisi nilai siswa di bagian menu E-Rapor -> Input Rapor</li>
+                                                <li>Guru bisa melihat semua data dan hanya beberapa fitur yang bisa digunakan oleh guru</li>
+                                                <li>Guru bisa mengisi nilai siswa di bagian menu E-Rapor -> Input Rapor</li>
                                             </ul>
                                         <li><h5>Rule Kepala Sekolah</h5></li>
                                             <ul>
                                                 <li>Kepala sekolah bisa melihat semua data dan hanya beberapa fitur yang bisa digunakan oleh kepala sekolah</li>
                                                 <li>Kepala sekolah bertugas memastikan nilai yang diinput wali kelas sudah benar dan tidak ada kecurangan. Berada pada menu E-Rapor -> Data Rapor</li>
                                             </ul>
-                                        <li><h5>Rule Guru</h5></li>
+                                        <li><h5>Rule Karyawan</h5></li>
                                             <ul>
-                                                <li>Guru hanya bisa melihat data tanpa ada satu fitur yang bisa ia gunakan.</li>
+                                                <li>Karyawan hanya bisa melihat data tanpa ada satu fitur yang bisa ia gunakan.</li>
                                             </ul>
                                     </ol>
                                 </div>

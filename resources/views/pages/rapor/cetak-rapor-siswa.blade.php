@@ -91,7 +91,10 @@
             <tr>
                 <th class="table-row" style="text-align: center;">No</th>
                 <th class="table-row">Mata Pelajaran</th>
-                <th class="table-row">Nilai</th>
+                <th class="table-row">Nilai Kognitif</th>
+                <th class="table-row">Grade Kognitif</th>
+                <th class="table-row">Nilai Keterampilan</th>
+                <th class="table-row">Grade Keterampilan</th>
             </tr>
         </thead>
         <tbody>
@@ -99,7 +102,38 @@
             <tr>
                 <td class="table-row" style="text-align: center;">{{ $no+1 }}</td>
                 <td class="table-row">{{ $nd->mapel_nama }}</td>
-                <td class="table-row" style="text-align: center;">{{ $nd->nilai_detail_nilai }}</td>
+                <td class="table-row" style="text-align: center;">{{ $nd->nilai_detail_kognitif }}</td>
+                <td class="table-row" style="text-align: center;">
+                    <?php 
+                        if($nd->nilai_detail_kognitif >= 85){
+                            echo "A";
+                        }elseif ($nd->nilai_detail_kognitif >= 75) {
+                            echo "B";
+                        }elseif ($nd->nilai_detail_kognitif >= 60) {
+                            echo "C";
+                        }elseif ($nd->nilai_detail_kognitif >= 40) {
+                            echo "D";
+                        }elseif ($nd->nilai_detail_kognitif < 40) {
+                            echo "E";
+                        }
+                    ?>
+                </td>
+                <td class="table-row" style="text-align: center;">{{ $nd->nilai_detail_keterampilan }}</td>
+                <td class="table-row" style="text-align: center;">
+                    <?php 
+                        if($nd->nilai_detail_keterampilan >= 85){
+                            echo "A";
+                        }elseif ($nd->nilai_detail_keterampilan >= 75) {
+                            echo "B";
+                        }elseif ($nd->nilai_detail_keterampilan >= 60) {
+                            echo "C";
+                        }elseif ($nd->nilai_detail_keterampilan >= 40) {
+                            echo "D";
+                        }elseif ($nd->nilai_detail_keterampilan < 40) {
+                            echo "E";
+                        }
+                    ?>
+                </td>
             </tr>
             @endforeach
         </tbody>

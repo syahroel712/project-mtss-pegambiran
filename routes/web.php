@@ -124,7 +124,6 @@ Route::prefix('administrator')->group(function () {
         Route::get('/rapor/{rapor}', [RaporController::class, 'edit'])->name('rapor.edit');
         Route::post('/rapor/update', [RaporController::class, 'update'])->name('rapor.update');
         Route::post('/rapor/delete', [RaporController::class, 'destroy'])->name('rapor.delete');
-        Route::post('/rapor/acc-rapor', [RaporController::class, 'accRapor'])->name('rapor.acc');
         // cari siswa
         Route::post('/rapor/cari-siswa', [RaporController::class, 'cariSiswa'])->name('rapor.cariSiswa');
         Route::get('/rapor/cari-nilai-siswa/{siswa}/{kelas}/{semester}/{tahun_ajar}', [RaporController::class, 'cariNilaiSiswa'])->name('rapor.cariNilaiSiswa');

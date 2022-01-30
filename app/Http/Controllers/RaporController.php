@@ -14,7 +14,7 @@ class RaporController extends Controller
 {
     public function index()
     {
-        if(session()->get('user_jabatan') == 'Wali Kelas'){
+        if(session()->get('user_jabatan') == 'Guru'){
             $kelas = DB::table('tb_walas')
                     ->join('tb_kelas', 'tb_walas.kelas_id', 'tb_kelas.kelas_id')
                     ->select('tb_kelas.kelas_id', 'tb_kelas.kelas_nama')
@@ -41,7 +41,7 @@ class RaporController extends Controller
 
     public function create()
     {
-        if(session()->get('user_jabatan') == 'Wali Kelas'){
+        if(session()->get('user_jabatan') == 'Guru'){
             $kelas = DB::table('tb_walas')
                     ->join('tb_kelas', 'tb_walas.kelas_id', 'tb_kelas.kelas_id')
                     ->select('tb_kelas.kelas_id', 'tb_kelas.kelas_nama')
@@ -96,7 +96,8 @@ class RaporController extends Controller
                     ->insert([
                         'nilai_id' => $cek_nilai->nilai_id,
                         'mapel_id' => $request->mapel_id,
-                        'nilai_detail_nilai' => $request->nilai_detail_nilai,
+                        'nilai_detail_kognitif' => $request->nilai_detail_kognitif,
+                        'nilai_detail_keterampilan' => $request->nilai_detail_keterampilan,
                     ]);
                 return json_encode([
                     'message' => 'Nilai mata pelajaran berhasil di tambahkan..',
@@ -108,10 +109,16 @@ class RaporController extends Controller
             }
                                 
         } else {
+            // cari data kepalas sekolah saat ini
+            $kepsek = DB::table('tb_guru')
+                        ->where('guru_jabatan', 'Kepala Sekolah')
+                        ->first();
+
             // insert ke tb_nilai
             $nilai_id = DB::table('tb_nilai')
                     ->insertGetId([
                         'guru_id' => $guru->guru_id,
+                        'kepsek_id' => $kepsek->guru_id,
                         'siswa_id' => $request->siswa_id,
                         'kelas_id' => $request->kelas_id,
                         'semester_id' => $request->semester_id,
@@ -124,7 +131,8 @@ class RaporController extends Controller
                     ->insert([
                         'nilai_id' => $nilai_id,
                         'mapel_id' => $request->mapel_id,
-                        'nilai_detail_nilai' => $request->nilai_detail_nilai,
+                        'nilai_detail_kognitif' => $request->nilai_detail_kognitif,
+                        'nilai_detail_keterampilan' => $request->nilai_detail_keterampilan,
                     ]);
             
             return json_encode([
@@ -152,7 +160,10 @@ class RaporController extends Controller
     {
         DB::table('tb_nilai_detail')
             ->where('nilai_detail_id', $request->nilai_detail_id)
-            ->update(['nilai_detail_nilai' => $request->nilai_detail_nilai]);
+            ->update([
+                'nilai_detail_kognitif' => $request->nilai_detail_kognitif,
+                'nilai_detail_keterampilan' => $request->nilai_detail_keterampilan,
+            ]);
 
         return json_encode([
             'message' => 'Nilai mata pelajaran berhasil diedit..',
@@ -170,43 +181,6 @@ class RaporController extends Controller
         return json_encode([
             'message' => 'Nilai mata pelajaran berhasil dihapus..',
         ]); 
-    }
-
-    public function accRapor(Request $request)
-    {
-        // cek apakah sudah ada data si tb_nilai
-        $cek_nilai = DB::table('tb_nilai')
-                ->where('siswa_id', $request->siswa_id)
-                ->where('kelas_id', $request->kelas_id)
-                ->where('semester_id', $request->semester_id)
-                ->where('tahun_ajar_id', $request->tahun_ajar_id)
-                ->first(); 
-
-        if($cek_nilai){
-            // cari data kepsek saat ini
-            $kepsek = DB::table('tb_guru')
-                        ->join('tb_kepsek', 'tb_guru.guru_id', 'tb_kepsek.guru_id')
-                        ->where('tb_guru.guru_jabatan', 'Kepala Sekolah')
-                        ->first();
-
-            // update status di tb_nilai
-            DB::table('tb_nilai')
-                ->where('tb_nilai.nilai_id', $cek_nilai->nilai_id)
-                ->update([
-                    'kepsek_id' => $kepsek->kepsek_id,
-                    'nilai_tahun' => date('Y'),
-                ]);
-
-            return json_encode([
-                'message' => 'Rapor telah di acc..',
-            ]);
-            
-        }else{
-            return json_encode([
-                'message' => 'Rapor belum lengkap..',
-            ]);
-        }
-
     }
 
 
@@ -352,11 +326,10 @@ class RaporController extends Controller
                         ->where('tb_nilai.semester_id', $semester_id)
                         ->where('tb_nilai.tahun_ajar_id', $tahun_ajar_id)
                         ->first();
-
-
+                        
         $data_kepsek = DB::table('tb_kepsek')
                         ->join('tb_guru', 'tb_kepsek.guru_id', 'tb_guru.guru_id')
-                        ->where('tb_kepsek.kepsek_id', $data_siswa->kepsek_id)
+                        ->where('tb_guru.guru_id', $data_siswa->kepsek_id)
                         ->select('tb_guru.guru_nama', 'tb_guru.guru_nip')
                         ->first();
 

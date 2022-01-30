@@ -194,7 +194,6 @@
                                                         <select class="custom-select @error('guru_jabatan') {{ 'is-invalid' }} @enderror" name="guru_jabatan" id="guru_jabatan">
                                                             <option value="">--Pilih--</option>
                                                             <option value="Kepala Sekolah">Kepala Sekolah</option>
-                                                            <option value="Wali Kelas">Wali Kelas</option>
                                                             <option value="Guru">Guru</option>
                                                             <option value="Admin">Admin</option>
                                                         </select>

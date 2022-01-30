@@ -39,7 +39,10 @@
                         <tr>
                             <th>No</th>
                             <th>Mata Pelajaran</th>
-                            <th>Nilai</th>
+                            <th>Nilai Kognitif</th>
+                            <th>Grade Kognitif</th>
+                            <th>Nilai Keterampilan</th>
+                            <th>Grade Keterampilan</th>
                         </tr>
                     </thead>
                     <tbody id="data_nilai_rapor_siswa">
