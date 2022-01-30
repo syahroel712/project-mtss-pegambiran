@@ -14,6 +14,7 @@ use App\Http\Controllers\TahunAjarController;
 use App\Http\Controllers\WalasController;
 use App\Http\Controllers\WalasSiswaController;
 use App\Http\Controllers\RaporController;
+use App\Http\Controllers\SppController;
 
 
 /*
@@ -131,6 +132,16 @@ Route::prefix('administrator')->group(function () {
         Route::get('/rapor/cari-data-siswa/{kelas}/{semester}/{tahun_ajar}', [RaporController::class, 'cariDataSiswa'])->name('rapor.cariDataSiswa');
         Route::get('/rapor/cari-data-nilai-siswa/{siswa}/{kelas}/{semester}/{tahun_ajar}', [RaporController::class, 'cariDataNilaiSiswa'])->name('rapor.cariDataNilaiSiswa');
         Route::get('/rapor/cetak-nilai-siswa/{siswa}/{kelas}/{semester}/{tahun_ajar}', [RaporController::class, 'cetakDataNilaiSiswa'])->name('rapor.cetakDataNilaiSiswa');
+
+        // spp
+        Route::get('spp', [SppController::class, 'index'])->name('spp');
+        Route::get('/spp/create', [SppController::class, 'create'])->name('spp.create');
+        Route::post('/spp', [SppController::class, 'store'])->name('spp.store');
+        Route::get('/spp/{spp}', [SppController::class, 'edit'])->name('spp.edit');
+        Route::put('/spp/{spp}', [SppController::class, 'update'])->name('spp.update');
+        Route::delete('/spp/{spp}', [SppController::class, 'destroy'])->name('spp.delete');
+
+
     });
 });
     

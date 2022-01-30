@@ -135,6 +135,14 @@
                                 @endif
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('spp') }}" class="nav-link {{ ($active == 'spp') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-bill"></i>
+                                <p>
+                                    Pembayaran SPP
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
