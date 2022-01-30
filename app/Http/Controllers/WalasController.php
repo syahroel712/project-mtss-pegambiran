@@ -17,11 +17,9 @@ class WalasController extends Controller
         $walas = DB::table('tb_walas')
                 ->join('tb_guru','tb_guru.guru_id', 'tb_walas.guru_id')
                 ->join('tb_kelas','tb_kelas.kelas_id', 'tb_walas.kelas_id')
-                ->join('tb_semester','tb_semester.semester_id', 'tb_walas.semester_id')
                 ->join('tb_tahun_ajar','tb_tahun_ajar.tahun_ajar_id', 'tb_walas.tahun_ajar_id')
-                ->select('tb_walas.*','tb_guru.guru_nama', 'tb_kelas.kelas_nama', 'tb_semester.semester_nama', 'tb_tahun_ajar.tahun_ajar_nama')
+                ->select('tb_walas.*','tb_guru.guru_nama', 'tb_kelas.kelas_nama', 'tb_tahun_ajar.tahun_ajar_nama')
                 ->orderBy('tb_kelas.kelas_nama', 'ASC')
-                ->orderBy('tb_semester.semester_nama', 'ASC')
                 ->orderBy('tb_tahun_ajar.tahun_ajar_nama', 'DESC')
                 ->get();
 
@@ -38,14 +36,15 @@ class WalasController extends Controller
     public function create()
     {
         $tahunAjar = TahunAjarModel::all();
-        $semester = semesterModel::all();
-        $kelas = kelasModel::all();
-        $guru = guruModel::all();
+        $kelas = KelasModel::all();
+        $guru = DB::table('tb_guru')
+                ->where('guru_jabatan', 'guru')
+                ->get();
+
         return view('pages/walas/form',[
             'active' => 'walas',
             'url' => 'walas',
             'tahunAjar' => $tahunAjar,
-            'semester' => $semester,
             'kelas' => $kelas,
             'guru' => $guru,
         ]);
@@ -56,19 +55,27 @@ class WalasController extends Controller
         $request->validate([
             'guru_id' => ['required'], 
             'kelas_id' => ['required'], 
-            'semester_id' => ['required'], 
             'tahun_ajar_id' => ['required'],
         ]);
 
         // cek apakah data sudah ada
-        $cek_walas = DB::table('tb_walas')
+        $cek_walas1 = DB::table('tb_walas')
                             ->where('guru_id', '=', $request->guru_id)
                             ->where('kelas_id', '=', $request->kelas_id)
-                            ->where('semester_id', '=', $request->semester_id)
                             ->where('tahun_ajar_id', '=', $request->tahun_ajar_id)
                             ->first();
 
-        if($cek_walas){
+        $cek_walas2 = DB::table('tb_walas')
+                            ->where('kelas_id', '=', $request->kelas_id)
+                            ->where('tahun_ajar_id', '=', $request->tahun_ajar_id)
+                            ->first();
+
+        if($cek_walas1){
+            return redirect()
+                ->route('walas.create')
+                ->with('message', 'Data sudah terdaftar. Silahkan Perbaiki Data Terlebih Dahulu.')
+                ->withInput();
+        }elseif ($cek_walas2) {
             return redirect()
                 ->route('walas.create')
                 ->with('message', 'Data sudah terdaftar. Silahkan Perbaiki Data Terlebih Dahulu.')
@@ -77,7 +84,6 @@ class WalasController extends Controller
 
         $walas->guru_id = $request->input('guru_id');
         $walas->kelas_id = $request->input('kelas_id');
-        $walas->semester_id = $request->input('semester_id');
         $walas->tahun_ajar_id = $request->input('tahun_ajar_id');
         $walas->save();
 
@@ -90,9 +96,11 @@ class WalasController extends Controller
     public function edit(WalasModel $walas)
     {
         $tahunAjar = TahunAjarModel::all();
-        $semester = semesterModel::all();
         $kelas = kelasModel::all();
-        $guru = guruModel::all();
+        $guru = DB::table('tb_guru')
+                ->where('guru_jabatan', 'guru')
+                ->get();
+                
         return view(
             'pages/walas/form',
             [
@@ -100,7 +108,6 @@ class WalasController extends Controller
                 'url' => 'walas.update',
                 'walas' => $walas,
                 'tahunAjar' => $tahunAjar,
-                'semester' => $semester,
                 'kelas' => $kelas,
                 'guru' => $guru,
             ]
@@ -109,32 +116,30 @@ class WalasController extends Controller
 
     public function update(Request $request, WalasModel $walas)
     {
+        // dd($request->all());
         $request->validate([
             'guru_id' => ['required'], 
             'kelas_id' => ['required'], 
-            'semester_id' => ['required'], 
             'tahun_ajar_id' => ['required'],
         ]);
 
+
         // cek apakah data sudah ada
-        $cek_walas = DB::table('tb_walas')
+        $cek_walas1 = DB::table('tb_walas')
                             ->where('guru_id', '=', $request->guru_id)
                             ->where('kelas_id', '=', $request->kelas_id)
-                            ->where('semester_id', '=', $request->semester_id)
                             ->where('tahun_ajar_id', '=', $request->tahun_ajar_id)
                             ->first();
 
-        if($cek_walas){
+        if($cek_walas1){
             return redirect()
-                ->route('walas.create')
+                ->route('walas.update', $walas->walas_id)
                 ->with('message', 'Data sudah terdaftar. Silahkan Perbaiki Data Terlebih Dahulu.')
                 ->withInput();
         }
 
-
         $walas->guru_id = $request->input('guru_id');
         $walas->kelas_id = $request->input('kelas_id');
-        $walas->semester_id = $request->input('semester_id');
         $walas->tahun_ajar_id = $request->input('tahun_ajar_id');
         $walas->save();
 

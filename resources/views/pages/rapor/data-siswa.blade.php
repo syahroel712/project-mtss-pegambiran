@@ -4,7 +4,6 @@
             <th>No</th>
             <th>NIS</th>
             <th>Nama</th>
-            <th>Status Rapor</th>
             <th>Option</th>
         </tr>
     </thead>
@@ -15,21 +14,8 @@
             <td>{{ $wls->siswa_nis }}</td>
             <td>{{ $wls->siswa_nama }}</td>
             <td>
-                @if($wls->kepsek_id == null OR $wls->kepsek_id == '0')
-                <p style="color: red;">Belum di Acc</p>
-                @else
-                <p style="color: blue;">Sudah di Acc</p>
-                @endif
-            </td>
-            <td>
                 <button type="button" class="btn btn-info btn-sm" onclick="mDetailSiswa('{{ $wls->siswa_id }}')"><i class="fa fa-search"></i> Detail</button>
-                @if($wls->kepsek_id == null OR $wls->kepsek_id =='0')
-                    @if(session()->has('guru_jabatan') == 'Kepala Sekolah')
-                    <button class="btn btn-warning btn-sm" onclick="mAccSiswa('{{ $wls->siswa_id }}')"><i class="fa fa-edit"></i> Acc</button>
-                    @endif
-                @else
                 <a href="{{ route('rapor.cetakDataNilaiSiswa', [$wls->siswa_id, $kelas_id, $semester_id, $tahun_ajar_id]) }}" class="btn btn-success btn-sm" target="_blank"><i class="fa fa-print"></i> Cetak</a>
-                @endif
             </td>
         </tr>
         @endforeach
@@ -97,7 +83,7 @@
         var semester_id = $('#semester_id').val();
         var tahun_ajar_id = $('#tahun_ajar_id').val();
 
-        $('#data_nilai_rapor_siswa').load(`{{ url("/rapor/cari-data-nilai-siswa") }}/` + id + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
+        $('#data_nilai_rapor_siswa').load(`{{ url("/administrator/rapor/cari-data-nilai-siswa") }}/` + id + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
 
         $('#ModalDetailSiswa').modal()
     }

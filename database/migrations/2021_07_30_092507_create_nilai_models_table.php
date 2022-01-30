@@ -21,7 +21,6 @@ class CreateNilaiModelsTable extends Migration
             $table->integer('kelas_id');
             $table->integer('semester_id');
             $table->integer('tahun_ajar_id');
-            $table->date('nilai_acc')->nullable();
             $table->string('nilai_tahun')->nullable();
             $table->timestamps();
 

@@ -53,7 +53,7 @@
                                                 <select class="custom-select select2bs4 @error('guru_id') {{ 'is-invalid' }} @enderror" name="guru_id" id="guru_id">
                                                     <option value="">--Pilih--</option>
                                                     @foreach($guru as $no => $gr)
-                                                    <option value="{{ $gr->guru_id }}">{{ $gr->guru_nama }} | {{ $gr->guru_jabatan }}</option>
+                                                    <option value="{{ $gr->guru_id }}">[ {{ $gr->guru_nip }} ] - [ {{ $gr->guru_nama }} ] - [ {{ $gr->guru_jabatan }} ] </option>
                                                     @endforeach
                                                 </select>
                                                 @if( old('guru_id') != ''  )
@@ -89,28 +89,6 @@
                                                 </script>
                                                 @endif
                                                 @error('kelas_id')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Semester</label>
-                                                <select class="custom-select select2bs4 @error('semester_id') {{ 'is-invalid' }} @enderror" name="semester_id" id="semester_id">
-                                                    <option value="">--Pilih--</option>
-                                                    @foreach($semester as $no => $sms)
-                                                    <option value="{{ $sms->semester_id }}">{{ $sms->semester_nama }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @if( old('semester_id') != ''  )
-                                                <script>
-                                                    document.getElementById('semester_id').value = "{{ old('semester_id') }}"
-                                                </script>
-                                                @endif
-                                                @if(isset($walas))
-                                                <script>
-                                                    document.getElementById('semester_id').value = '<?php echo $walas->semester_id ?>'
-                                                </script>
-                                                @endif
-                                                @error('semester_id')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
                                             </div>

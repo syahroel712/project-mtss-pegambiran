@@ -17,7 +17,8 @@ class CreateNilaiDetailModelsTable extends Migration
             $table->id('nilai_detail_id');
             $table->integer('nilai_id');
             $table->integer('mapel_id');
-            $table->double('nilai_detail_nilai', 8, 2);
+            $table->double('nilai_detail_kognitif', 8, 2);
+            $table->double('nilai_detail_keterampilan', 8, 2);
             $table->timestamps();
         });
     }

@@ -79,7 +79,6 @@ class RaporController extends Controller
         // cari data walas 
         $guru = DB::table('tb_walas')
                 ->where('kelas_id', $request->kelas_id)
-                ->where('semester_id', $request->semester_id)
                 ->where('tahun_ajar_id', $request->tahun_ajar_id)
                 ->first();
 
@@ -100,7 +99,7 @@ class RaporController extends Controller
                         'nilai_detail_nilai' => $request->nilai_detail_nilai,
                     ]);
                 return json_encode([
-                    'message' => 'Mata pelajaran berhasil di tambahkan..',
+                    'message' => 'Nilai mata pelajaran berhasil di tambahkan..',
                 ]);
             }else{
                 return json_encode([
@@ -217,7 +216,6 @@ class RaporController extends Controller
         // cari data walas
         $walas = DB::table('tb_walas')
                 ->where('kelas_id', $request->kelas_id)
-                ->where('semester_id', $request->semester_id)
                 ->where('tahun_ajar_id', $request->tahun_ajar_id)
                 ->first();
 
@@ -250,7 +248,7 @@ class RaporController extends Controller
                     ->where('semester_id', $semester_id)
                     ->where('tahun_ajar_id', $tahun_ajar_id)
                     ->first();
-
+        
         if($cek_nilai){
             $nilai_detail = DB::table('tb_nilai_detail')
                                 ->join('tb_mapel', 'tb_nilai_detail.mapel_id', 'tb_mapel.mapel_id')
@@ -265,7 +263,6 @@ class RaporController extends Controller
             'nilai_detail' => $nilai_detail,
         ]);
 
-
     }
 
     // cari data siswa
@@ -274,7 +271,6 @@ class RaporController extends Controller
         // cari data walas
         $walas = DB::table('tb_walas')
                 ->where('kelas_id', $kelas_id)
-                ->where('semester_id', $semester_id)
                 ->where('tahun_ajar_id', $tahun_ajar_id)
                 ->first();
         
@@ -299,13 +295,12 @@ class RaporController extends Controller
                                     $join->on('tb_walas_siswa.siswa_id', '=', 'tb_nilai.siswa_id');
                                     $join->on('tb_walas.guru_id', '=', 'tb_nilai.guru_id');
                                     $join->on('tb_walas.kelas_id', '=', 'tb_nilai.kelas_id');
-                                    $join->on('tb_walas.semester_id', '=', 'tb_nilai.semester_id');
                                     $join->on('tb_walas.tahun_ajar_id', '=', 'tb_nilai.tahun_ajar_id');
                                 })
                             ->where('tb_walas.guru_id', $walas->guru_id)
-                            ->where('tb_walas.kelas_id', $kelas_id)
-                            ->where('tb_walas.semester_id', $semester_id)
-                            ->where('tb_walas.tahun_ajar_id', $tahun_ajar_id)
+                            ->where('tb_nilai.kelas_id', $kelas_id)
+                            ->where('tb_nilai.semester_id', $semester_id)
+                            ->where('tb_nilai.tahun_ajar_id', $tahun_ajar_id)
                             ->get();
 
         }

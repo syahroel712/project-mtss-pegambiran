@@ -270,7 +270,7 @@
                     var semester_id = $('#semester_id').val();
                     var tahun_ajar_id = $('#tahun_ajar_id').val();
 
-                    $('#data_nilai_siswa').load(`{{ url("/rapor/cari-nilai-siswa") }}/` + this.value + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
+                    $('#data_nilai_siswa').load(`{{ url("/administrator/rapor/cari-nilai-siswa") }}/` + this.value + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
                 });
 
                 function simpanNilai() {  
@@ -299,13 +299,13 @@
                             $('#mapel_id').val('0').change();
                             $('#nilai_detail_nilai').val('');
 
-                            $('#data_nilai_siswa').load(`{{ url("/rapor/cari-nilai-siswa") }}/` + siswa_id + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
+                            $('#data_nilai_siswa').load(`{{ url("/administrator/rapor/cari-nilai-siswa") }}/` + siswa_id + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
                             
                         }).catch(function (err) {
                             console.log(err);
                         })
                     }else{
-                        alert('salah')
+                        alert('Pastikan data tidak kosong!!!')
                     }
                 }
 
@@ -370,7 +370,7 @@
                     var tahun_ajar_id = $('#tahun_ajar_id').val();
                     var siswa_id = $('#siswa_id').val();
 
-                    $('#data_nilai_siswa').load(`{{ url("/rapor/cari-nilai-siswa") }}/` + siswa_id + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
+                    $('#data_nilai_siswa').load(`{{ url("/administrator/rapor/cari-nilai-siswa") }}/` + siswa_id + '/' + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
                 }
 
             </script>

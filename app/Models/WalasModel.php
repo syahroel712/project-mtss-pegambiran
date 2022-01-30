@@ -12,7 +12,6 @@ class WalasModel extends Model
     protected $fillable = [
         'guru_id', 
         'kelas_id', 
-        'semester_id', 
         'tahun_ajar_id', 
     ];
 }

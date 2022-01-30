@@ -115,7 +115,6 @@
                                                             <th>No</th>
                                                             <th>Nis</th>
                                                             <th>Nama</th>
-                                                            <th>Status Rapor</th>
                                                             <th>Option</th>
                                                         </tr>
                                                     </thead>
@@ -146,7 +145,7 @@
                     var tahun_ajar_id = $('#tahun_ajar_id').val();
                     
                     if(kelas_id != '0' && semester_id != '0' && tahun_ajar_id != '0'){
-                        $('#data_siswa').load(`{{ url("/rapor/cari-data-siswa") }}/` + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
+                        $('#data_siswa').load(`{{ url("/administrator/rapor/cari-data-siswa") }}/` + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
                     } else {
                         $('#data_siswa').html();
                     }
@@ -171,7 +170,7 @@
                         $('#messageModalText').text(res.data.message)
                         setInterval(function(){ $('#messageModal').hide(); }, 5000);
                         $('#ModalAccSiswa').modal('hide')
-                        $('#data_siswa').load(`{{ url("/rapor/cari-data-siswa") }}/` + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
+                        $('#data_siswa').load(`{{ url("/administrator/rapor/cari-data-siswa") }}/` + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
 
                     }).catch(function (err) {
                         console.log(err);

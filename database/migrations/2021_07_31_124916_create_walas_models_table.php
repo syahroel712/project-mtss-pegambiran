@@ -17,7 +17,6 @@ class CreateWalasModelsTable extends Migration
             $table->id('walas_id');
             $table->integer('guru_id');
             $table->integer('kelas_id');
-            $table->integer('semester_id');
             $table->integer('tahun_ajar_id');
             $table->timestamps();
         });

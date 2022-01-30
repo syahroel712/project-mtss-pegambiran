@@ -50,7 +50,6 @@
                                                 <th>No</th>
                                                 <th>Nama Wali Kelas</th>
                                                 <th>Kelas</th>
-                                                <th>Semester</th>
                                                 <th>Tahun Ajar</th>
                                                 <th>Option</th>
                                             </tr>
@@ -61,7 +60,6 @@
                                                 <td>{{ $no+1 }}</td>
                                                 <td>{{ $wls->guru_nama }}</td>
                                                 <td>{{ $wls->kelas_nama }}</td>
-                                                <td>{{ $wls->semester_nama }}</td>
                                                 <td>{{ $wls->tahun_ajar_nama }}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-info btn-sm" onclick="mDetail('{{$wls->walas_id}}')"><i class="fa fa-search"></i> Data Siswa</button>
@@ -138,7 +136,7 @@
                                         <select class="custom-select select2bs4 @error('siswa_id') {{ 'is-invalid' }} @enderror" name="siswa_id" id="siswa_id">
                                             <option value="">--Pilih--</option>
                                             @foreach($siswa as $no => $swa)
-                                            <option value="{{ $swa->siswa_id }}">{{ $swa->siswa_nis }} | {{ $swa->siswa_nama }}</option>
+                                            <option value="{{ $swa->siswa_id }}"> [ {{ $swa->siswa_nis }} ] - [ {{ $swa->siswa_nama }} ]</option>
                                             @endforeach
                                         </select>
                                         @if( old('siswa_id') != ''  )
@@ -185,7 +183,8 @@
                 function mDetail(id) {
                     $('#ModalDetail').modal()
                     $('#walas_id').val(id);
-                    $('#dataSiswa').load(`{{ url("wali-kelas-siswa") }}/` + id)
+                    $('#dataSiswa').load(`{{ url("administrator/wali-kelas-siswa") }}/` + id);
+                    
                 }
 
                 function simpanSiswa() { 
@@ -197,11 +196,9 @@
                         'walas_id' : walas_id, 
                     }).then(function (res) {
                         mDetail(walas_id)
-
                         $('#messageModal').show();
                         $('#messageModalText').text(res.data.message)
                         setInterval(function(){ $('#messageModal').hide(); }, 5000);
-
                     }).catch(function (err) {
                         console.log(err);
                     })    
