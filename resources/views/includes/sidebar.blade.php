@@ -3,7 +3,7 @@
             <a href="#" class="brand-link">
                 <img src="{{ asset('assets/dist/img/logo-swimoc.png') }}" alt="AdminLTE Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">MTSN Pengambiran</span>
+                <span class="brand-text font-weight-light">Hello World</span>
             </a>
 
             <!-- Sidebar -->
@@ -137,14 +137,14 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('spp') }}" class="nav-link {{ ($active == 'spp') ? 'active' : '' }}">
-                                <i class="nav-icon fa fa-bill"></i>
+                                <i class="nav-icon fas fa-dollar-sign"></i>
                                 <p>
                                     Pembayaran SPP
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview {{ ($active == 'profile' || $active == '' || $active == '') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ ($active == 'profile' || $active == '' || $active == '') ? 'active' : '' }}" >
+                        <li class="nav-item has-treeview {{ ($active == 'profile' || $active == 'info' || $active == '') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ ($active == 'profile' || $active == 'info' || $active == '') ? 'active' : '' }}" >
                                 <i class="nav-icon fa fa-school"></i>
                                 <p>
                                     Data Sekolah
@@ -156,6 +156,12 @@
                                     <a href="{{ route('profile') }}" class="nav-link {{ ($active == 'profile') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Profile Sekolah</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('info') }}" class="nav-link {{ ($active == 'info') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Info Sekolah</p>
                                     </a>
                                 </li>
                             </ul>

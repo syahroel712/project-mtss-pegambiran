@@ -16,6 +16,7 @@ use App\Http\Controllers\WalasSiswaController;
 use App\Http\Controllers\RaporController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\InfoController;
 
 
 /*
@@ -149,6 +150,14 @@ Route::prefix('administrator')->group(function () {
         Route::get('/profile/{profile}', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('/profile/{profile}', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile/{profile}', [ProfileController::class, 'destroy'])->name('profile.delete');
+
+        // info
+        Route::get('info', [InfoController::class, 'index'])->name('info');
+        Route::get('/info/create', [InfoController::class, 'create'])->name('info.create');
+        Route::post('/info', [InfoController::class, 'store'])->name('info.store');
+        Route::get('/info/{info}', [InfoController::class, 'edit'])->name('info.edit');
+        Route::put('/info/{info}', [InfoController::class, 'update'])->name('info.update');
+        Route::delete('/info/{info}', [InfoController::class, 'destroy'])->name('info.delete');
 
 
     });
