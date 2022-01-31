@@ -143,6 +143,23 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item has-treeview {{ ($active == 'profile' || $active == '' || $active == '') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ ($active == 'profile' || $active == '' || $active == '') ? 'active' : '' }}" >
+                                <i class="nav-icon fa fa-school"></i>
+                                <p>
+                                    Data Sekolah
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('profile') }}" class="nav-link {{ ($active == 'profile') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Profile Sekolah</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

@@ -15,6 +15,7 @@ use App\Http\Controllers\WalasController;
 use App\Http\Controllers\WalasSiswaController;
 use App\Http\Controllers\RaporController;
 use App\Http\Controllers\SppController;
+use App\Http\Controllers\ProfileController;
 
 
 /*
@@ -140,6 +141,14 @@ Route::prefix('administrator')->group(function () {
         Route::get('/spp/{spp}', [SppController::class, 'edit'])->name('spp.edit');
         Route::put('/spp/{spp}', [SppController::class, 'update'])->name('spp.update');
         Route::delete('/spp/{spp}', [SppController::class, 'destroy'])->name('spp.delete');
+
+        // profile
+        Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+        Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
+        Route::post('/profile', [ProfileController::class, 'store'])->name('profile.store');
+        Route::get('/profile/{profile}', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile/{profile}', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile/{profile}', [ProfileController::class, 'destroy'])->name('profile.delete');
 
 
     });
