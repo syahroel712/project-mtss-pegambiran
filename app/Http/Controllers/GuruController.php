@@ -45,6 +45,7 @@ class GuruController extends Controller
             'guru_password'     => 'required', 
             'guru_jabatan'  => 'required', 
             'guru_status'   => 'required', 
+            'guru_foto'   => 'required|mimes:jpg,jpeg,png', 
             'mapel_id'  => 'required',
         ]);
         if ($validator->fails()) {
@@ -65,6 +66,9 @@ class GuruController extends Controller
             }
         }
 
+        $foto = $request->file('guru_foto');
+        $filename = time() . "." . $foto->getClientOriginalExtension();
+        $foto->move('guru/', $filename);
 
         $guru->guru_nip = $request->input('guru_nip');
         $guru->guru_nama = $request->input('guru_nama');
@@ -76,6 +80,7 @@ class GuruController extends Controller
         $guru->guru_password = Hash::make($request->input('guru_password'));
         $guru->guru_jabatan = $request->input('guru_jabatan');
         $guru->guru_status = $request->input('guru_status');
+        $guru->guru_foto = $filename;
         $guru->mapel_id = $request->input('mapel_id');
         $guru->save();
         
@@ -130,6 +135,7 @@ class GuruController extends Controller
             'guru_username'     => 'required', 
             'guru_jabatan'  => 'required', 
             'guru_status'   => 'required', 
+            'guru_foto'   => 'mimes:jpg,jpeg,png', 
             'mapel_id'  => 'required',
         ]);
 
@@ -158,6 +164,16 @@ class GuruController extends Controller
             $password = $request->input('guru_password');
             $pwd = Hash::make($password);
             $guru->guru_password = $pwd;
+        }
+        //cek tipe dari data lama dahulu
+        if ($request->hasFile('guru_foto')) {
+            
+            unlink('guru/' . $guru->guru_foto);
+            
+            $foto = $request->file('guru_foto');
+            $filename = time() . "." . $foto->getClientOriginalExtension();
+            $foto->move('guru/', $filename);
+            $guru->guru_foto = $filename;
         }
 
         $guru->guru_nip = $request->input('guru_nip');
@@ -189,6 +205,8 @@ class GuruController extends Controller
 
     public function destroy(GuruModel $guru)
     {
+        $guru_foto = $guru->guru_foto;
+        unlink('guru/' . $guru_foto);
 
         $guru->forceDelete();
 

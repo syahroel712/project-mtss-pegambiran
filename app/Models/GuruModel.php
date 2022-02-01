@@ -20,6 +20,7 @@ class GuruModel extends Model
         'guru_password', 
         'guru_jabatan', 
         'guru_status', 
+        'guru_foto',
         'id_mapel', 
     ];
 }

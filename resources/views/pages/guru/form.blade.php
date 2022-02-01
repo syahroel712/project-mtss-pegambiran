@@ -138,7 +138,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Mata Pelajaran</label>
                                                         <select class="custom-select select2bs4 @error('mapel_id') {{ 'is-invalid' }} @enderror" name="mapel_id" id="mapel_id">
@@ -164,7 +164,7 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label>Status</label>
                                                         <select class="custom-select @error('guru_status') {{ 'is-invalid' }} @enderror" name="guru_status" id="guru_status">
@@ -188,6 +188,15 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label>Foto</label>
+                                                        <input type="file" class="form-control @error('guru_foto') {{ 'is-invalid' }} @enderror" name="guru_foto" id="guru_foto" value="{{ old('guru_foto') ?? $guru->guru_foto ?? '' }}">
+                                                        @error('guru_foto')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>Jabatan</label>
@@ -195,7 +204,7 @@
                                                             <option value="">--Pilih--</option>
                                                             <option value="Kepala Sekolah">Kepala Sekolah</option>
                                                             <option value="Guru">Guru</option>
-                                                            <option value="Admin">Admin</option>
+                                                            <option value="Karyawan">Karyawan</option>
                                                         </select>
                                                         
                                                         @if( old('guru_jabatan') != ''  )

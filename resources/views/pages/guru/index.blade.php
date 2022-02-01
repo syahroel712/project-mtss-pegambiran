@@ -56,6 +56,7 @@
                                                 <th>Alamat</th>
                                                 <th>Jabatan</th>
                                                 <th>Status</th>
+                                                <th>Foto</th>
                                                 @if(session()->get('user_jabatan') == 'Admin')
                                                 <th>Option</th>
                                                 @endif
@@ -72,6 +73,7 @@
                                                 <td>{{ $gr->guru_alamat }}</td>
                                                 <td>{{ $gr->guru_jabatan }}</td>
                                                 <td>{{ $gr->guru_status }}</td>
+                                                <td><img src="{{ asset('guru/'. $gr->guru_foto) }}" alt="" style="width: 10em; float: center;"></td>
                                                 @if(session()->get('user_jabatan') == 'Admin')
                                                 <td>
                                                     <a href="{{ route('guru.edit', $gr->guru_id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
