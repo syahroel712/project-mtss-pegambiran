@@ -52,9 +52,7 @@
                                                 <th>Tipe</th>
                                                 <th>Tanggal</th>
                                                 <th>Foto</th>
-                                                @if(session()->get('user_jabatan') == 'Admin')
                                                 <th>Option</th>
-                                                @endif
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -65,12 +63,15 @@
                                                 <td>{{ $in->info_tipe }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($in->info_tgl)->isoFormat('D MMMM Y') }}</td>
                                                 <td><img src="{{ asset('info/'. $in->info_foto) }}" alt="" style="width: 10em; float: center;"></td>
-                                                @if(session()->get('user_jabatan') == 'Admin')
                                                 <td>
+                                                    @if(session()->get('user_jabatan') == 'Admin')
                                                     <a href="{{ route('info.edit', $in->info_id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('info.delete', $in->info_id) }}')"><i class="fa fa-trash"></i> </button>
+                                                    @endif
+                                                    <a href="{{ route('frontend.info.detail', $in->info_slug) }}" class="btn btn-success btn-sm" target="_blank"><i class="fa fa-search"></i> Detail</a>
+                                                    <a href="" c></a>
                                                 </td>
-                                                @endif
+
                                             </tr>
                                             @endforeach
                                         </tbody>

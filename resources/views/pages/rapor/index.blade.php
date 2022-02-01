@@ -151,33 +151,6 @@
                     }
                 }
 
-                
-                function accRaporSiswa() {  
-                    var siswa_id = $('#siswa_id_acc').val();
-                    var kelas_id = $('#kelas_id').val();
-                    var semester_id = $('#semester_id').val();
-                    var tahun_ajar_id = $('#tahun_ajar_id').val();
-
-
-                    axios.post('{{ route("rapor.acc") }}', {
-                        '_token': '{{ csrf_token() }}',
-                        'kelas_id' : kelas_id, 
-                        'semester_id' : semester_id, 
-                        'tahun_ajar_id' : tahun_ajar_id, 
-                        'siswa_id' : siswa_id, 
-                    }).then(function (res) {
-                        $('#messageModal').show();
-                        $('#messageModalText').text(res.data.message)
-                        setInterval(function(){ $('#messageModal').hide(); }, 5000);
-                        $('#ModalAccSiswa').modal('hide')
-                        $('#data_siswa').load(`{{ url("/administrator/rapor/cari-data-siswa") }}/` + kelas_id + '/' + semester_id + '/' + tahun_ajar_id )
-
-                    }).catch(function (err) {
-                        console.log(err);
-                    })
-                
-                }
-
             </script>
 
 @endsection

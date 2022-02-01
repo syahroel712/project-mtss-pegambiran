@@ -22,6 +22,8 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
+
+
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
                         <li class="nav-item">
@@ -32,6 +34,7 @@
                                 </p>
                             </a>
                         </li>
+                        @if(session()->get('user_jabatan') == 'Admin' )
                         <li class="nav-item has-treeview {{ ($active == 'kelas' || $active == 'mapel' || $active == 'semester' || $active == 'tahunAjar') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link {{ ($active == 'kelas' || $active == 'mapel' || $active == 'semester' || $active == 'tahunAjar') ? 'active' : '' }}" >
                                 <i class="nav-icon fas fa-box-open"></i>
@@ -67,8 +70,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item has-treeview {{ ($active == 'siswa' || $active == 'guru' || $active == 'kepsek') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ ($active == 'siswa' || $active == 'guru' || $active == 'kepsek') ? 'active' : '' }}" >
+                        <li class="nav-item has-treeview {{ ($active == 'siswa' || $active == 'guru' || $active == 'kepsek' || $active == 'admin') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ ($active == 'siswa' || $active == 'guru' || $active == 'kepsek' || $active == 'admin') ? 'active' : '' }}" >
                                 <i class="nav-icon fa fa-users"></i>
                                 <p>
                                     Data User
@@ -102,6 +105,15 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('spp') }}" class="nav-link {{ ($active == 'spp') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-dollar-sign"></i>
+                                <p>
+                                    Pembayaran SPP
+                                </p>
+                            </a>
+                        </li>
+                        @endif
                         <li class="nav-item has-treeview {{ ($active == 'walas' || $active == 'rapor' || $active == 'input-rapor') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link {{ ($active == 'walas' || $active == 'rapor' || $active == 'input-rapor') ? 'active' : '' }}" >
                                 <i class="nav-icon fa fa-tasks"></i>
@@ -111,13 +123,15 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+                                @if(session()->get('user_jabatan') == 'Admin' )
                                 <li class="nav-item">
                                     <a href="{{ route('walas') }}" class="nav-link {{ ($active == 'walas') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Wali Kelas & Siswa</p>
                                     </a>
                                 </li>
-                                @if(session()->get('user_jabatan') !=  'Kepala Sekolah' AND session()->get('user_jabatan') !=  'Guru')
+                                @endif
+                                @if(session()->get('user_jabatan') ==  'Guru')
                                 <li class="nav-item">
                                     <a href="{{ route('rapor.create') }}" class="nav-link {{ ($active == 'input-rapor') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
@@ -125,23 +139,13 @@
                                     </a>
                                 </li>
                                 @endif
-                                @if(session()->get('user_jabatan') !=  'Guru')
                                 <li class="nav-item">
                                     <a href="{{ route('rapor') }}" class="nav-link {{ ($active == 'rapor') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Data Rapor</p>
                                     </a>
                                 </li>
-                                @endif
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('spp') }}" class="nav-link {{ ($active == 'spp') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-dollar-sign"></i>
-                                <p>
-                                    Pembayaran SPP
-                                </p>
-                            </a>
                         </li>
                         <li class="nav-item has-treeview {{ ($active == 'profile' || $active == 'info' || $active == 'slider' || $active == 'galeri') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link {{ ($active == 'profile' || $active == 'info' || $active == 'slider' || $active == 'galeri') ? 'active' : '' }}" >
@@ -152,12 +156,20 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
+                                @if(session()->get('user_jabatan') ==  'Admin')
                                 <li class="nav-item">
                                     <a href="{{ route('slider') }}" class="nav-link {{ ($active == 'slider') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Slider</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('galeri') }}" class="nav-link {{ ($active == 'galeri') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Galeri</p>
+                                    </a>
+                                </li>
+                                @endif
                                 <li class="nav-item">
                                     <a href="{{ route('profile') }}" class="nav-link {{ ($active == 'profile') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
@@ -170,15 +182,12 @@
                                         <p>Informasi</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('galeri') }}" class="nav-link {{ ($active == 'galeri') ? 'active' : '' }}">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Galeri</p>
-                                    </a>
-                                </li>
+                                
                             </ul>
                         </li>
                     </ul>
+                
+                
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

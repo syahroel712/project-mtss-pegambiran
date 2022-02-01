@@ -66,7 +66,7 @@
                                                 <td>{{ $sp->kelas_nama }}</td>
                                                 <td>{{ $sp->tahun_ajar_nama }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($sp->spp_tgl_bayar)->isoFormat('D MMMM Y') }}</td>
-                                                <td>{{ $sp->spp_bayar }}</td>
+                                                <td>Rp.{{ number_format($sp->spp_bayar) }}</td>
                                                 <td>
                                                     @if(session()->get('user_jabatan') == 'Admin')
                                                     <a href="{{ route('spp.edit', $sp->spp_id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>

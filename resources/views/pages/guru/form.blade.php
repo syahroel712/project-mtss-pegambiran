@@ -204,7 +204,7 @@
                                                             <option value="">--Pilih--</option>
                                                             <option value="Kepala Sekolah">Kepala Sekolah</option>
                                                             <option value="Guru">Guru</option>
-                                                            <option value="Karyawan">Karyawan</option>
+                                                            <!-- <option value="Karyawan">Karyawan</option> -->
                                                         </select>
                                                         
                                                         @if( old('guru_jabatan') != ''  )

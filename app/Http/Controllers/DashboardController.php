@@ -42,17 +42,40 @@ class DashboardController extends Controller
             $request->session()->put('user_jabatan', "Admin");
                     
         }elseif ($request->level == "Guru") {
-            $user = DB::table('tb_admin')
-                    ->where('admin_username', '=', $request->username)
+            $user = DB::table('tb_guru')
+                    ->where('guru_username', '=', $request->username)
                     ->first();
-        }elseif ($request->level == "Karyawan") {
-            $user = DB::table('tb_admin')
-                    ->where('admin_username', '=', $request->username)
-                    ->first();
+
+            if (!$user) {
+                return back()->with("message", "Username Salah");
+            }
+            if (!Hash::check($request->password, $user->guru_password)) {
+                return back()->with("message", "Password Salah");
+            }
+
+            // masukan data login ke session
+            $request->session()->put('user_id', $user->guru_id);
+            $request->session()->put('user_nama', $user->guru_nama);
+            $request->session()->put('user_username', $user->guru_username);
+            $request->session()->put('user_jabatan', "Guru");
+
         }elseif ($request->level == "Siswa") {
-            $user = DB::table('tb_admin')
-                    ->where('admin_username', '=', $request->username)
+            $user = DB::table('tb_siswa')
+                    ->where('siswa_nis', '=', $request->username)
                     ->first();
+
+            if (!$user) {
+                return back()->with("message", "Username Salah");
+            }
+            if (!Hash::check($request->password, $user->siswa_password)) {
+                return back()->with("message", "Password Salah");
+            }
+
+            // masukan data login ke session
+            $request->session()->put('user_id', $user->siswa_id);
+            $request->session()->put('user_nama', $user->siswa_nama);
+            $request->session()->put('user_username', $user->siswa_nis);
+            $request->session()->put('user_jabatan', "Siswa");
         
         }else{
                 return back()->with("message", "Silahkan pilih level");
@@ -103,10 +126,10 @@ class DashboardController extends Controller
         $request->session()->forget('user_id');
         $request->session()->forget('user_nama');
         $request->session()->forget('user_username');
-        $request->session()->forget('user_level');
-        $request->session()->forget('guru_id');
+        $request->session()->forget('user_jabatan');
+        $request->session()->forget('kepsek_id');
         $request->session()->forget('token');
         // redirect ke halaman home
-        return redirect('/')->with("pesan", "Anda Sudah Logout");
+        return redirect('administrator/dashboard')->with("pesan", "Anda Sudah Logout");
     }
 }

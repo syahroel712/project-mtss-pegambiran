@@ -14,16 +14,24 @@ class RaporController extends Controller
 {
     public function index()
     {
-        if(session()->get('user_jabatan') == 'Guru'){
-            $kelas = DB::table('tb_walas')
-                    ->join('tb_kelas', 'tb_walas.kelas_id', 'tb_kelas.kelas_id')
-                    ->select('tb_kelas.kelas_id', 'tb_kelas.kelas_nama')
-                    ->where('tb_walas.guru_id', session()->get('user_id'))
-                    ->groupBy('tb_kelas.kelas_nama')
+
+        if(session()->get('user_jabatan') == 'Siswa'){
+            $rapor = DB::table('tb_nilai')
+                    ->join('tb_siswa', 'tb_siswa.siswa_id', 'tb_nilai.siswa_id')
+                    ->join('tb_kelas', 'tb_kelas.kelas_id', 'tb_nilai.kelas_id')
+                    ->join('tb_semester', 'tb_semester.semester_id', 'tb_nilai.semester_id')
+                    ->join('tb_tahun_ajar', 'tb_tahun_ajar.tahun_ajar_id', 'tb_nilai.tahun_ajar_id')
+                    ->where('tb_siswa.siswa_id', session()->get('user_id'))
+                    ->orderBy('tb_nilai.nilai_id', 'ASC')
                     ->get();
-        }else{
-            $kelas = KelasModel::all();
+        
+            return view('pages/rapor/rapor-persiswa',[
+                'active' => 'rapor',
+                'rapor' => $rapor,
+            ]);
         }
+
+        $kelas = KelasModel::all();
         $semester = SemesterModel::all();
         $tahunAjar = TahunAjarModel::all();
         $mapel = MapelModel::all();
@@ -41,17 +49,20 @@ class RaporController extends Controller
 
     public function create()
     {
-        if(session()->get('user_jabatan') == 'Guru'){
-            $kelas = DB::table('tb_walas')
-                    ->join('tb_kelas', 'tb_walas.kelas_id', 'tb_kelas.kelas_id')
-                    ->select('tb_kelas.kelas_id', 'tb_kelas.kelas_nama')
-                    ->where('tb_walas.guru_id', session()->get('user_id'))
-                    ->groupBy('tb_kelas.kelas_nama')
-                    ->get();
-        }else{
-            $kelas = KelasModel::all();
-        }
-
+        // if(session()->get('user_jabatan') == 'Guru'){
+            // $kelas = DB::table('tb_walas')
+            //         ->join('tb_kelas', 'tb_walas.kelas_id', 'tb_kelas.kelas_id')
+            //         ->select('tb_kelas.kelas_id', 'tb_kelas.kelas_nama')
+            //         ->where('tb_walas.guru_id', session()->get('user_id'))
+            //         ->groupBy('tb_kelas.kelas_nama')
+            //         ->get();
+            // if(count($kelas) < 1){
+            //     $kelas = KelasModel::all();
+            // }
+        // }else{
+        //     $kelas = KelasModel::all();
+        // }
+        $kelas = KelasModel::all();
         $semester = SemesterModel::all();
         $tahunAjar = TahunAjarModel::all();
         $mapel = MapelModel::all();

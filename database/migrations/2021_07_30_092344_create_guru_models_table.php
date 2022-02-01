@@ -23,7 +23,7 @@ class CreateGuruModelsTable extends Migration
             $table->text('guru_alamat')->nullable();
             $table->string('guru_username');
             $table->string('guru_password');
-            $table->enum('guru_jabatan', ['Kepala Sekolah', 'Guru', 'Karyawan']);
+            $table->enum('guru_jabatan', ['Kepala Sekolah', 'Guru']);
             $table->enum('guru_status', ['Aktif', 'Pensiun', 'Pindah']);
             $table->string('guru_foto')->nullable();
             $table->integer('mapel_id')->default(0);
