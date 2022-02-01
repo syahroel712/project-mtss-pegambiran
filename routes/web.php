@@ -18,6 +18,7 @@ use App\Http\Controllers\SppController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\GaleriController;
 
 
 use App\Http\Controllers\Frontend\HomeController;
@@ -170,6 +171,14 @@ Route::prefix('administrator')->group(function () {
         Route::get('/slider/{slider}', [SliderController::class, 'edit'])->name('slider.edit');
         Route::put('/slider/{slider}', [SliderController::class, 'update'])->name('slider.update');
         Route::delete('/slider/{slider}', [SliderController::class, 'destroy'])->name('slider.delete');
+
+        // galeri
+        Route::get('galeri', [GaleriController::class, 'index'])->name('galeri');
+        Route::get('/galeri/create', [GaleriController::class, 'create'])->name('galeri.create');
+        Route::post('/galeri', [GaleriController::class, 'store'])->name('galeri.store');
+        Route::get('/galeri/{galeri}', [GaleriController::class, 'edit'])->name('galeri.edit');
+        Route::put('/galeri/{galeri}', [GaleriController::class, 'update'])->name('galeri.update');
+        Route::delete('/galeri/{galeri}', [GaleriController::class, 'destroy'])->name('galeri.delete');
 
 
 

@@ -143,8 +143,8 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview {{ ($active == 'profile' || $active == 'info' || $active == 'slider') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ ($active == 'profile' || $active == 'info' || $active == 'slider') ? 'active' : '' }}" >
+                        <li class="nav-item has-treeview {{ ($active == 'profile' || $active == 'info' || $active == 'slider' || $active == 'galeri') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ ($active == 'profile' || $active == 'info' || $active == 'slider' || $active == 'galeri') ? 'active' : '' }}" >
                                 <i class="nav-icon fa fa-school"></i>
                                 <p>
                                     Data Sekolah
@@ -168,6 +168,12 @@
                                     <a href="{{ route('info') }}" class="nav-link {{ ($active == 'info') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Informasi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('galeri') }}" class="nav-link {{ ($active == 'galeri') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Galeri</p>
                                     </a>
                                 </li>
                             </ul>
