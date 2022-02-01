@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="section_title_container text-center">
-                            <h2 class="section_title">Selamat Datang di Website MTSN AL Ihsan Pengambiran</h2>
+                            <h2 class="section_title">Selamat Datang di Website MTSS AL Ihsan Pegambiran</h2>
                             <div class="section_subtitle">
                                 <p>Change Your Life. Start Here.</p>
                             </div>

@@ -16,7 +16,7 @@
 						<div class="breadcrumbs">
 							<ul>
 								<li><a href="index.html">Home</a></li>
-								<li>Contact</li>
+								<li>Kontak</li>
 							</ul>
 						</div>
 					</div>
@@ -54,7 +54,7 @@
 					<!-- Contact Form -->
 					<div class="col-lg-6">
 						<div class="contact_form">
-							<div class="contact_info_title">Contact Form</div>
+							<div class="contact_info_title">Kontak Form</div>
 							<form action="#" class="comment_form">
 								<div>
 									<div class="form_title">Name</div>
@@ -78,7 +78,7 @@
 					<!-- Contact Info -->
 					<div class="col-lg-6">
 						<div class="contact_info">
-							<div class="contact_info_title">Contact Info</div>
+							<div class="contact_info_title">Kontak Info</div>
 							<div class="contact_info_text">
                                 <div class="contact_info_location_title">MTSS AL-IHSAN PEGAMBIRAN</div>
 							</div>

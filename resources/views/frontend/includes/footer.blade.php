@@ -12,7 +12,7 @@
                                 <div class="footer_section footer_about">
                                     <div class="footer_logo_container">
                                         <a href="#">
-                                            <div class="footer_logo_text">MTSN <span>Pengambiran</span></div>
+                                            <div class="footer_logo_text">MTSS <span>Pegambiran</span></div>
                                         </a>
                                     </div>
                                     <div class="footer_about_text">
@@ -41,9 +41,9 @@
                                     <div class="footer_title">Contact Us</div>
                                     <div class="footer_contact_info">
                                         <ul>
-                                            <li>Email: mtsnpengambiran@gmail.com</li>
-                                            <li>Phone: +(88) 111 555 666</li>
-                                            <li>Pengambiran, Padang, Sumatera Barat</li>
+                                            <li>Email: alihsan.pegambiran@yahoo.com</li>
+                                            <li>Phone: 082387354178</li>
+                                            <li>Jorong Pegambiran, Kecamatan Koto Balingka, Kabupaten Pasaman Barat, Provinsi Sumatera Barat</li>
                                         </ul>
                                     </div>
                                 </div>

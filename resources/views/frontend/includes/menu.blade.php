@@ -9,15 +9,15 @@
                                 <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
                                     <ul class="top_bar_contact_list">
                                         <li>
-                                            <div class="question">Have any questions?</div>
+                                            <div class="question">Punya pertanyaan?</div>
                                         </li>
                                         <li>
                                             <i class="fa fa-phone" aria-hidden="true"></i>
-                                            <div>001-1234-88888</div>
+                                            <div>082387354178</div>
                                         </li>
                                         <li>
                                             <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                                            <div>mtsnpengambiran@gmail.com</div>
+                                            <div>alihsan.pegambiran@yahoo.com</div>
                                         </li>
                                     </ul>
                                     <div class="top_bar_login ml-auto">
@@ -38,7 +38,7 @@
                             <div class="header_content d-flex flex-row align-items-center justify-content-start">
                                 <div class="logo_container">
                                     <a href="#">
-                                        <div class="logo_text">MTSN <span>Pengambiran</span></div>
+                                        <div class="logo_text">MTSS <span>Pegambiran</span></div>
                                     </a>
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
