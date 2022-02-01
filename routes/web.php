@@ -189,3 +189,9 @@ Route::prefix('administrator')->group(function () {
 
 // halaman frontend
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/profile/{slug}', [HomeController::class, 'profile'])->name('frontend.profile');
+Route::get('/info/{slug}', [HomeController::class, 'info'])->name('frontend.info');
+Route::get('/info/detail/{slug}', [HomeController::class, 'infoDetail'])->name('frontend.info.detail');
+Route::get('/galeries', [HomeController::class, 'galeri'])->name('frontend.galeri');
+Route::get('/kontak', [HomeController::class, 'kontak'])->name('frontend.kontak');
+Route::get('/data-guru', [HomeController::class, 'guru'])->name('frontend.guru');

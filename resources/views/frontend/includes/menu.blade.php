@@ -21,7 +21,7 @@
                                         </li>
                                     </ul>
                                     <div class="top_bar_login ml-auto">
-                                        <div class="login_button"><a href="#">Login</a></div>
+                                        <div class="login_button"><a href="{{ route('dashboard') }}">Login</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -43,26 +43,26 @@
                                 </div>
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
-                                        <li class="active"><a href="#">Home</a></li>
+                                        <li class="{{ ($active == 'home') ? 'active' : '' }}"><a href="{{ route('home') }}">Home</a></li>
                                         <div class="dropdown">
-                                            <li class=""><a href="">Profile</a></li>
+                                            <li class="{{ ($active == 'profile') ? 'active' : '' }}"><a href="">Profile</a></li>
                                             <div class="dropdown-content">
                                                 @foreach($menu_profile as $no => $mp)    
-                                                <a href="{{ $mp->profile_slug }}">{{ $mp->profile_nama }}</a>
+                                                <a href="{{ route('frontend.profile', $mp->profile_slug) }}">{{ $mp->profile_nama }}</a>
                                                 @endforeach
                                             </div>
                                         </div>
                                         <div class="dropdown">
-                                            <li class=""><a href="">Informasi</a></li>
+                                            <li class="{{ ($active == 'info') ? 'active' : '' }}"><a href="">Informasi</a></li>
                                             <div class="dropdown-content">
                                                 @foreach($menu_info as $no => $mi)    
-                                                <a href="{{ $mi->info_tipe_slug }}">{{ $mi->info_tipe }}</a>
+                                                <a href="{{ route('frontend.info', $mi->info_tipe_slug) }}">{{ $mi->info_tipe }}</a>
                                                 @endforeach
                                             </div>
                                         </div>
-                                        <li class=""><a href="#">Guru</a></li>
-                                        <li class=""><a href="#">Galeri</a></li>
-                                        <li class=""><a href="#">Kontak</a></li>
+                                        <li class="{{ ($active == 'guru') ? 'active' : '' }}"><a href="{{ route('frontend.guru') }}">Guru</a></li>
+                                        <li class="{{ ($active == 'galeri') ? 'active' : '' }}"><a href="{{ route('frontend.galeri') }}">Galeri</a></li>
+                                        <li class="{{ ($active == 'kontak') ? 'active' : '' }}"><a href="{{ route('frontend.kontak') }}">Kontak</a></li>
                                     </ul>
                                     <div class="hamburger menu_mm">
                                         <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
