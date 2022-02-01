@@ -17,6 +17,9 @@ use App\Http\Controllers\RaporController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\SliderController;
+
+
 use App\Http\Controllers\Frontend\HomeController;
 
 
@@ -159,6 +162,15 @@ Route::prefix('administrator')->group(function () {
         Route::get('/info/{info}', [InfoController::class, 'edit'])->name('info.edit');
         Route::put('/info/{info}', [InfoController::class, 'update'])->name('info.update');
         Route::delete('/info/{info}', [InfoController::class, 'destroy'])->name('info.delete');
+
+        // slider
+        Route::get('slider', [SliderController::class, 'index'])->name('slider');
+        Route::get('/slider/create', [SliderController::class, 'create'])->name('slider.create');
+        Route::post('/slider', [SliderController::class, 'store'])->name('slider.store');
+        Route::get('/slider/{slider}', [SliderController::class, 'edit'])->name('slider.edit');
+        Route::put('/slider/{slider}', [SliderController::class, 'update'])->name('slider.update');
+        Route::delete('/slider/{slider}', [SliderController::class, 'destroy'])->name('slider.delete');
+
 
 
     });

@@ -143,8 +143,8 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview {{ ($active == 'profile' || $active == 'info' || $active == '') ? 'menu-open' : '' }}">
-                            <a href="#" class="nav-link {{ ($active == 'profile' || $active == 'info' || $active == '') ? 'active' : '' }}" >
+                        <li class="nav-item has-treeview {{ ($active == 'profile' || $active == 'info' || $active == 'slider') ? 'menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ ($active == 'profile' || $active == 'info' || $active == 'slider') ? 'active' : '' }}" >
                                 <i class="nav-icon fa fa-school"></i>
                                 <p>
                                     Data Sekolah
@@ -153,15 +153,21 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
+                                    <a href="{{ route('slider') }}" class="nav-link {{ ($active == 'slider') ? 'active' : '' }}">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Slider</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{ route('profile') }}" class="nav-link {{ ($active == 'profile') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Profile Sekolah</p>
+                                        <p>Profile</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('info') }}" class="nav-link {{ ($active == 'info') ? 'active' : '' }}">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Info Sekolah</p>
+                                        <p>Informasi</p>
                                     </a>
                                 </li>
                             </ul>
