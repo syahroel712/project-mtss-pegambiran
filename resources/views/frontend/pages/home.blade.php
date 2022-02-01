@@ -3,6 +3,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/about.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/about_responsive.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
 @endpush
 @section('content')
         <!-- Home -->
@@ -235,7 +236,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div class="courses_button trans_200"><a href="#">Lihat Semua Galeri</a></div>
+                        <div class="courses_button trans_200"><a href="{{ route('frontend.galeri') }}">Lihat Semua Galeri</a></div>
                     </div>
                 </div>
             </div>

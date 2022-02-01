@@ -105,12 +105,20 @@
             </div>
             <nav class="menu_nav">
                 <ul class="menu_mm">
-                    <li class="menu_mm"><a href="index.html">Home</a></li>
-                    <li class="menu_mm"><a href="#">About</a></li>
-                    <li class="menu_mm"><a href="#">Courses</a></li>
-                    <li class="menu_mm"><a href="#">Blog</a></li>
-                    <li class="menu_mm"><a href="#">Page</a></li>
-                    <li class="menu_mm"><a href="contact.html">Contact</a></li>
+                    <li class="menu_mm"><a href="{{ route('home') }}">Home</a></li>
+                    @foreach($menu_profile as $no => $mp)    
+                    <li class="menu_mm">
+                        <a href="{{ route('frontend.profile', $mp->profile_slug) }}">{{ $mp->profile_nama }}</a>
+                    </li>
+                    @endforeach
+                    @foreach($menu_info as $no => $mi)    
+                    <li class="menu_mm">
+                        <a href="{{ route('frontend.info', $mi->info_tipe_slug) }}">{{ $mi->info_tipe }}</a>
+                    </li>
+                    @endforeach
+                    <li class="menu_mm"><a href="{{ route('frontend.guru') }}">Guru</a></li>
+                    <li class="menu_mm"><a href="{{ route('frontend.galeri') }}">Galeri</a></li>
+                    <li class="menu_mm"><a href="{{ route('frontend.kontak') }}">Kontak</a></li>
                 </ul>
             </nav>
         </div>

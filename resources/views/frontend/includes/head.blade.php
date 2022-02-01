@@ -8,8 +8,5 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/OwlCarousel2-2.2.1/animate.css') }}">
-
-
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/dropdown.css') }}">
+    
