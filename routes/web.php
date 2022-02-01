@@ -17,6 +17,7 @@ use App\Http\Controllers\RaporController;
 use App\Http\Controllers\SppController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\Frontend\HomeController;
 
 
 /*
@@ -165,9 +166,5 @@ Route::prefix('administrator')->group(function () {
     
 
 
-
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
+// halaman frontend
+Route::get('/', [HomeController::class, 'index'])->name('home');
