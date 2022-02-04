@@ -147,6 +147,7 @@ Route::prefix('administrator')->group(function () {
         Route::get('/spp/{spp}', [SppController::class, 'edit'])->name('spp.edit');
         Route::put('/spp/{spp}', [SppController::class, 'update'])->name('spp.update');
         Route::delete('/spp/{spp}', [SppController::class, 'destroy'])->name('spp.delete');
+        Route::get('/spp/cetak/{spp}', [SppController::class, 'cetak'])->name('spp.cetak');
 
         // profile
         Route::get('profile', [ProfileController::class, 'index'])->name('profile');

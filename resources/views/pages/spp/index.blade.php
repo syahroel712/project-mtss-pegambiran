@@ -68,6 +68,7 @@
                                                 <td>{{ \Carbon\Carbon::parse($sp->spp_tgl_bayar)->isoFormat('D MMMM Y') }}</td>
                                                 <td>Rp.{{ number_format($sp->spp_bayar) }}</td>
                                                 <td>
+                                                    <a href="{{ route('spp.cetak', $sp->spp_id) }}" target="_blank" class="btn btn-success btn-sm"><i class="fa fa-print"> Cetak</i></a>
                                                     @if(session()->get('user_jabatan') == 'Admin')
                                                     <a href="{{ route('spp.edit', $sp->spp_id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm" onclick="mHapus('{{ route('spp.delete', $sp->spp_id) }}')"><i class="fa fa-trash"></i> </button>

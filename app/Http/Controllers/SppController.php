@@ -117,4 +117,21 @@ class SppController extends Controller
             ->route('spp')
             ->with('message', 'Data berhasil dihapus');
     }
+
+    public function cetak($id)
+    {
+        $spp = DB::table('tb_spp')
+                ->join('tb_siswa','tb_siswa.siswa_id', 'tb_spp.siswa_id')
+                ->join('tb_kelas','tb_kelas.kelas_id', 'tb_spp.kelas_id')
+                ->join('tb_tahun_ajar','tb_tahun_ajar.tahun_ajar_id', 'tb_spp.tahun_ajar_id')
+                ->select('tb_spp.*','tb_siswa.siswa_nama','tb_siswa.siswa_nis', 'tb_kelas.kelas_nama', 'tb_tahun_ajar.tahun_ajar_nama')
+                ->where('tb_spp.spp_id', $id)
+                ->first();
+                
+
+        return view('pages/spp/cetak',[
+            'spp' => $spp,
+        ]);
+    }
+
 }
