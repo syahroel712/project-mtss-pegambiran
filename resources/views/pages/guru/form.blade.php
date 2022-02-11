@@ -249,7 +249,7 @@
                         $('#jabatan_div').html(`
                             <div class="form-group">
                                 <label>Lama Jabatan</label>
-                                <input type="text" class="form-control number @error('kepsek_tahun') {{ 'is-invalid' }} @enderror" name="kepsek_tahun" id="kepsek_tahun" value="{{ old('kepsek_tahun') ?? $guru->kepsek_tahun ?? '' }}" placeholder="2020-2023">
+                                <input type="text" class="form-control @error('kepsek_tahun') {{ 'is-invalid' }} @enderror" name="kepsek_tahun" id="kepsek_tahun" value="{{ old('kepsek_tahun') ?? $guru->kepsek_tahun ?? '' }}" placeholder="2020-2023">
                                 @error('kepsek_tahun')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -269,7 +269,7 @@
                         $('#jabatan_div').html(`
                             <div class="form-group">
                                 <label>Lama Jabatan</label>
-                                <input type="text" class="form-control number @error('kepsek_tahun') {{ 'is-invalid' }} @enderror" name="kepsek_tahun" id="kepsek_tahun" value="{{ old('kepsek_tahun') ?? $guru->kepsek_tahun ?? '' }}" placeholder="Contoh : 2020-2023">
+                                <input type="text" class="form-control @error('kepsek_tahun') {{ 'is-invalid' }} @enderror" name="kepsek_tahun" id="kepsek_tahun" value="{{ old('kepsek_tahun') ?? $guru->kepsek_tahun ?? '' }}" placeholder="Contoh : 2020-2023">
                                 @error('kepsek_tahun')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -290,7 +290,7 @@
                         $('#jabatan_div').html(`
                             <div class="form-group">
                                 <label>Lama Jabatan</label>
-                                <input type="text" class="form-control number @error('kepsek_tahun') {{ 'is-invalid' }} @enderror" name="kepsek_tahun" id="kepsek_tahun" value="{{ old('kepsek_tahun') ?? $guru->kepsek_tahun ?? '' }}" placeholder="Contoh : 2020-2023">
+                                <input type="text" class="form-control @error('kepsek_tahun') {{ 'is-invalid' }} @enderror" name="kepsek_tahun" id="kepsek_tahun" value="{{ old('kepsek_tahun') ?? $guru->kepsek_tahun ?? '' }}" placeholder="Contoh : 2020-2023">
                                 @error('kepsek_tahun')
                                 <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
